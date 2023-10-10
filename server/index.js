@@ -12,10 +12,10 @@ const allCountries = async () => {
     const countriesData = response.data;
     //map para solo obtener la información deseada 
     const countries = countriesData.map(async (data) => {
-      // para no tener el error  string violation 
+      // para no tener el error  string violation  (los vulve de array a str)
       const continent = data.continents.join(" ");
-      // para no tener el error  string violati y si capital no está definido
-      const capital =Array.isArray(data.capital)? data.capital.join(" ") : data.capital || '';
+      // para no tener el error  string violation y si capital no está definido
+      const capital =Array.isArray(data.capital)? data.capital.join(" ") : data.capital || '-';
       /*       console.log(capital) */
       //Por si la información de capital o subregión no se encuentra la completa con un guión
       if(!data.capital || !data.subregion) {
