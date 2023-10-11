@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <div>
-        {location.pathname !== '/' ? <NavBar /> : null}
+        {location.pathname !== '/' ? <NavBar /> : null /*No mostrar el Nav en el landing page*/}
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/home' element={<Home />} />
