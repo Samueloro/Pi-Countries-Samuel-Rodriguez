@@ -1,11 +1,17 @@
 import { useDispatch, connect } from "react-redux"
 import { getAllCountries } from "../../Redux/actions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CardCountry from "../CardCountry/cardCountry";
 
 function Home({ allCountries }) {
 
+    const itemsPerPage = 10;
+    //la página a iniciar es 0
+    const [currentPage, setCurrentPage] = useState(0)
+
     const dispatch = useDispatch();
+    //Estados para realizar el paginado 
+
 
     // Obtenemos todos los countries apenas se carga la página
     useEffect(() => {
@@ -18,20 +24,26 @@ function Home({ allCountries }) {
     }, [dispatch]);
 
     //Funciones para cambiar de página
-    const handleNext = ()=>{
-        console.log('Pa lante')
+    const handleNext = () => {
+        setCurrentPage(currentPage + 1)
     }
-    const handlePrevius = ()=>{
-        console.log('Pa tras')
+    const handlePrevius = () => {
+        setCurrentPage(currentPage - 1)
     }
+    //filtrar los paises a mostrar en cada página
+    const startIndex = currentPage * itemsPerPage;  // indice del primer pais a mostrar por página
+    const endIndex = startIndex + itemsPerPage; // indice del ultimo país a mostrar por página
+    //los paises que se  van a mostrar
+    const countriesToShow = allCountries.slice(startIndex, endIndex) // se muestran los paises por ejemplo del  (0 al 9)(1 al 10)
 
 
     return (
         <div>
-            <button onClick={handleNext}>Next</button>
-            <button onClick={handlePrevius}>Previus</button>
+            {/* Se agrega la propiedad disabled para que se desabilite si no hay paises en el next o en el previus */}
+            <button onClick={handlePrevius} disabled={currentPage === 0}>Previus</button>
+            <button onClick={handleNext} disabled={endIndex >= allCountries.length}>Next</button> 
             {
-                allCountries.map((country) => {
+                countriesToShow.map((country) => {
                     return (
                         <CardCountry
                             key={country.id}
@@ -43,7 +55,7 @@ function Home({ allCountries }) {
                             subregion={country.subregion}
                             area={country.area}
                             population={country.population}
-                            />
+                        />
                     )
                 })
             }
