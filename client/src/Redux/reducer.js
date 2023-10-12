@@ -1,8 +1,9 @@
-import { GET_ALL_COUNTRIES } from "./actions-types"
+import { GET_ALL_COUNTRIES, SEARCH_BY_NAME } from "./actions-types"
 
 
 const initialState = {
     allCountries: [],
+    searchCountries: [],
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -12,6 +13,11 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 allCountries: payload,
             };
+        case SEARCH_BY_NAME:
+            return{
+                ...state, 
+                searchCountries: payload,
+            }    
         default:
             return state;
     }

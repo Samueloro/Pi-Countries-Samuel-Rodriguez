@@ -2,6 +2,7 @@ import { useDispatch, connect } from "react-redux"
 import { getAllCountries } from "../../Redux/actions";
 import { useEffect, useState } from "react";
 import CardCountry from "../CardCountry/cardCountry";
+import SearchBar from "../SearchBar/searchBar";
 
 function Home({ allCountries }) {
 
@@ -39,9 +40,10 @@ function Home({ allCountries }) {
 
     return (
         <div>
+            <SearchBar/>
             {/* Se agrega la propiedad disabled para que se desabilite si no hay paises en el next o en el previus */}
-            <button onClick={handlePrevius} disabled={currentPage === 0}>Previus</button>
-            <button onClick={handleNext} disabled={endIndex >= allCountries.length}>Next</button> 
+            <button onClick={handlePrevius} disabled={currentPage === 0}>Previus Page</button>
+            <button onClick={handleNext} disabled={endIndex >= allCountries.length}>Next Page</button> 
             {
                 countriesToShow.map((country) => {
                     return (
