@@ -3,7 +3,6 @@ import { GET_ALL_COUNTRIES, SEARCH_BY_NAME } from "./actions-types"
 
 const initialState = {
     allCountries: [],
-    searchCountries: [],
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -16,7 +15,7 @@ const reducer = (state = initialState, { type, payload }) => {
         case SEARCH_BY_NAME:
             return{
                 ...state, 
-                searchCountries: payload,
+                allCountries: payload,
             }    
         default:
             return state;

@@ -8,17 +8,17 @@ function SearchBar({ searchByname }) {
     //estados para manejar la busqueda por nombre 
     const [searchCountry, setSearchCountry] = useState('');
 
-    const handleSearch = (event) => {
-        const value = event.target.value;
-        setSearchCountry(value); //seteamos el valor de buscar con el valor ingresado
-        searchByname(value);// ejecutamos la acción de redux con el valor escrito
-        console.log(value)
-        console.log(searchByname(value))
+    const handleSearch =async (event) => {
+        try {
+            const value = event.target.value;
+            setSearchCountry(value); //seteamos el valor de buscar con el valor ingresado
+            await searchByname(value);// ejecutamos la acción de redux con el valor escrito
+        } catch (error) {}
     }
 
     return (
         <div>
-            <input value={searchCountry} onChange={handleSearch} type="search" placeholder="Search by name" />
+            <input value={searchCountry} onChange={handleSearch} type="search" placeholder="Search Country" />
         </div>
     )
 }
