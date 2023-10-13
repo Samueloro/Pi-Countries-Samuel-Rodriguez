@@ -19,8 +19,8 @@ function Home({ allCountries }) {
         const loadCountries = async () => {
             try {
                 await dispatch(getAllCountries());
-            } catch (error) { console.error(error) }
-        }
+            } catch (error) { throw error };
+        };
         loadCountries();
     }, [dispatch]);
 
@@ -68,7 +68,7 @@ function Home({ allCountries }) {
 const mapStateToProps = state => {
     return {
         allCountries: state.allCountries
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps)(Home) 
+export default connect(mapStateToProps)(Home); 
