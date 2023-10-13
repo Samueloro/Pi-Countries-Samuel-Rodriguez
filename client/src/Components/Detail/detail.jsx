@@ -18,13 +18,13 @@ function Detail({ country }) {
 
     return (
         <div>
+            <img src={country.image} alt={`${country.name} from ${country.continent}`}/>
             <h1>Name: {country.name}</h1>
             <h1>Continent: {country.continent}</h1>
             <h2>Cappital: {country.capital}</h2>
             <h2>Subregion: {country.subregion}</h2>
             <h2>Area: {country.area}</h2>
             <h2>Population: {country.population}</h2>
-            <img src={country.image} alt={`${country.name} from ${country.continent}`}/>
         </div>
     )
 }
