@@ -108,7 +108,7 @@ function Form({ allCountries }) {
                 <br />
                 {errors.country ? errors.country : null}
             </p>
-            <h1>Time to create your activity</h1>
+            <h1>Create your activity</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label> Name: </label>

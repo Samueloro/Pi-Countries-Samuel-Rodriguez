@@ -1,8 +1,13 @@
 
 export const validateName = (name) => {
+    const hasNumber = /[0-9]/.test(name);
+
     if(name.trim()===""){
         return "Please enter an activity's name"
     };
+    if(hasNumber){
+        return "The activity's name cannot have numbers"
+    }
     return null;
 };
 

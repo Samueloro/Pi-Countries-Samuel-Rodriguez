@@ -1,6 +1,11 @@
 export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
-export const SEARCH_BY_NAME = 'SEARCH_BY_NAME';
-export const GET_COUNTRY_BY_ID = 'GET_COUNTRY_BY_ID'
-export const ORDER = 'ORDER'
+export const GET_COUNTRY_BY_ID = 'GET_COUNTRY_BY_ID';
 
-export const POST_ACTIVITY = 'POST_ACTIVITY'
+export const POST_ACTIVITY = 'POST_ACTIVITY';
+
+export const SEARCH_BY_NAME = 'SEARCH_BY_NAME';
+
+export const ORDER = 'ORDER';
+export const FILTER_CONTINENT = 'FILTER_CONTINENT';
+export const FILTER_POPULATION = 'FILTER_POPULATION';
+

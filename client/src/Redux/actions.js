@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, ORDER, POST_ACTIVITY, SEARCH_BY_NAME } from "./actions-types";
+import { FILTER_CONTINENT, FILTER_POPULATION, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, ORDER, POST_ACTIVITY, SEARCH_BY_NAME } from "./actions-types";
 import axios from 'axios';
 
 export const getAllCountries = () => {
@@ -65,5 +65,19 @@ export const orderBYName = (order) => {
     return {
         type: ORDER,
         payload: order
+    };
+};
+
+export const filterByContinent = (continent) => {
+    return {
+        type: FILTER_CONTINENT,
+        payload: continent
+    };
+};
+
+export const filterByPopulation = (order) => {
+    return {
+        type: FILTER_POPULATION,
+        payload: order,
     };
 };
