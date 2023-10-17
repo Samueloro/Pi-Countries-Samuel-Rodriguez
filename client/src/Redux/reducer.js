@@ -1,9 +1,10 @@
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, SEARCH_BY_NAME } from "./actions-types";
+import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, ORDER, POST_ACTIVITY, SEARCH_BY_NAME } from "./actions-types";
 
 
 const initialState = {
     allCountries: [],
-    country:[],
+    country: [],
+    activities: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -22,6 +23,24 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 country: payload,
+            }
+        case POST_ACTIVITY:
+            return {
+                ...state,
+                activities: [...state.activities, payload]
+            }
+        case ORDER:
+            let orderCopy = [...state.allCountries];
+            if (payload === 'A') {
+                orderCopy.sort(
+                    (a, b) => a.name.localeCompare(b.name));
+            } else if (payload === 'Z') {
+                orderCopy.sort(
+                    (a, b) => b.name.localeCompare(a.name));
+            };
+            return {
+                ...state,
+                allCountries:orderCopy,
             }
         default:
             return state;
