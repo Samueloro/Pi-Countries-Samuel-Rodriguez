@@ -22,18 +22,11 @@ module.exports = (sequelize) => {
       },
     },
     duration: {
-      // String ya que la duración la vamos a solicitar en formato HH:MM
-      type: DataTypes.STRING,
-
+      type: DataTypes.INTEGER,
       validate: {
-        isHours(value) {
-          // regex para formato hora
-          const regex = /^\d{1,2}:\d{2}$/;
-          if (!regex.test(value)){
-            throw new Error ('La duración debe tener el formato HH:MM (ejemplo 2:30 o 00:30)')
-          }
-        }
-      }
+        min: 0,
+        max: 24,
+      },
     },
     season: {
       type: DataTypes.ENUM('Summer', 'Autumn', 'Winter', 'Spring'),
