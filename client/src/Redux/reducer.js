@@ -1,4 +1,4 @@
-import { FILTER_CONTINENT, FILTER_POPULATION, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, ORDER, POST_ACTIVITY, SEARCH_BY_NAME } from "./actions-types";
+import { FILTER_BY_ACTIVITY, FILTER_CONTINENT, FILTER_POPULATION, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, ORDER, POST_ACTIVITY, SEARCH_BY_NAME } from "./actions-types";
 
 
 const initialState = {
@@ -33,8 +33,8 @@ const reducer = (state = initialState, { type, payload }) => {
             }
         case ORDER:
             let orderCopy = [...state.filteredCountries];
-            if (payload === "All"){
-                return{
+            if (payload === "All") {
+                return {
                     ...state,
                     filteredCountries: state.allCountries,
                 }
@@ -65,8 +65,8 @@ const reducer = (state = initialState, { type, payload }) => {
             }
         case FILTER_POPULATION:
             let copy = [...state.filteredCountries];
-            if (payload === "All"){
-                return{
+            if (payload === "All") {
+                return {
                     ...state,
                     filteredCountries: state.allCountries,
                 }
@@ -83,6 +83,27 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 filteredCountries: copy,
+            }
+        case FILTER_BY_ACTIVITY:
+            if (payload === "All") {
+                return {
+                    ...state,
+                    filteredCountries: state.allCountries,
+                }
+            }
+            if (payload === "Has") {
+                const filterActivity = state.allCountries.filter((country) => country.Activities.length > 0)
+                return{
+                    ...state,
+                    filteredCountries: filterActivity,
+                };
+            };
+            if (payload === "Without") {
+                const filterActivity = state.allCountries.filter((country) => country.Activities.length === 0)
+                return{
+                    ...state,
+                    filteredCountries: filterActivity,
+                };
             };
         default:
             return state;

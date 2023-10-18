@@ -1,5 +1,5 @@
 import { useDispatch, connect } from "react-redux"
-import { filterByContinent, filterByPopulation, getAllCountries, orderBYName } from "../../Redux/actions";
+import { filterByActivity, filterByContinent, filterByPopulation, getAllCountries, orderBYName } from "../../Redux/actions";
 import { useEffect, useState } from "react";
 import CardCountry from "../CardCountry/cardCountry";
 import SearchBar from "../SearchBar/searchBar";
@@ -46,8 +46,14 @@ function Home({ filteredCountries }) {
         dispatch(filterByContinent(event.target.value));
     };
 
+    //FILTRAR POR POBLACIÓN
     const handlePopulation = (event) => {
         dispatch(filterByPopulation(event.target.value));
+    };
+
+    //FILTRAR POR ACTIVIDAD
+    const handleActivity = (event)=>{
+        dispatch(filterByActivity(event.target.value));
     };
 
     return (
@@ -71,6 +77,12 @@ function Home({ filteredCountries }) {
                 <option value={"All"}>Select</option>
                 <option value={"smaller"}>Smaller population</option>
                 <option value={"higher"}>Higher population</option>
+            </select>
+
+            <select name="orderAct" id="orderAct" onChange={handleActivity}>
+                <option value={"All"}>Select</option>
+                <option value={"Without"}>Without Activities</option>
+                <option value={"Has"}>Has Activities</option>
             </select>
 
             <select name="orderName" id="orderName" onChange={handleOrder}>

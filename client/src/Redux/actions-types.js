@@ -8,4 +8,6 @@ export const SEARCH_BY_NAME = 'SEARCH_BY_NAME';
 export const ORDER = 'ORDER';
 export const FILTER_CONTINENT = 'FILTER_CONTINENT';
 export const FILTER_POPULATION = 'FILTER_POPULATION';
+export const FILTER_BY_ACTIVITY = 'FILTER_BY_ACTIVITY';
+
 
