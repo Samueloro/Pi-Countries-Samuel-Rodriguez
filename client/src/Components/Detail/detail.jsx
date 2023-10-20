@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 function Detail({ country }) {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const { name, continent, capital, subregion, area, population, image} = country;
 
     useEffect(() => {
         const detailCountry = async () => {
@@ -16,19 +17,20 @@ function Detail({ country }) {
         detailCountry();
     }, [id]);
 
+
     return (
         <div>
-            <img src={country.image} alt={`${country.name} from ${country.continent}`} />
-            <h1>Name: {country.name}</h1>
-            <h1>Continent: {country.continent}</h1>
-            {country.capital === '-' ? null :
-                <h2>Capital: {country.capital}</h2>
+            <img src={image} alt={`${name} from ${continent}`} />
+            <h1>Name: {name}</h1>
+            <h1>Continent: {continent}</h1>
+            {capital === '-' ? null :
+                <h2>Capital: {capital}</h2>
             }
-            {country.subregion === '-' ? null :
-                <h2>Subregion: {country.subregion}</h2>
+            {subregion === '-' ? null :
+                <h2>Subregion: {subregion}</h2>
             }
-            <h2>Area: {country.area}</h2>
-            <h2>Population: {country.population}</h2>
+            <h2>Area: {area}</h2>
+            <h2>Population: {population}</h2>
         </div>
     )
 }

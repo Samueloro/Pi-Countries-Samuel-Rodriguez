@@ -9,7 +9,11 @@ export default function NavBar () {
             </NavLink>
 
             <NavLink to={'/form'}>
-            <button>Form</button> 
+            <button>Create Activity</button> 
+            </NavLink>
+
+            <NavLink to={'/activities'}>
+            <button>My Activities</button> 
             </NavLink>
 
             <NavLink to={'/'}>

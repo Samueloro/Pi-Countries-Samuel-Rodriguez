@@ -1,10 +1,11 @@
-import { FILTER_BY_ACTIVITY, FILTER_CONTINENT, FILTER_POPULATION, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, ORDER, POST_ACTIVITY, SEARCH_BY_NAME } from "./actions-types";
+import { FILTER_BY_ACTIVITY, FILTER_CONTINENT, FILTER_POPULATION, GET_ACTIVITIES, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, ORDER, POST_ACTIVITY, SEARCH_BY_NAME } from "./actions-types";
 
 
 const initialState = {
     allCountries: [],
     country: [],
     activities: [],
+    allActivities: [],
     filteredCountries: [],
 };
 
@@ -29,7 +30,12 @@ const reducer = (state = initialState, { type, payload }) => {
         case POST_ACTIVITY:
             return {
                 ...state,
-                activities: [...state.activities, payload]
+                activities: payload
+            }
+        case GET_ACTIVITIES:
+            return {
+                ...state,
+                allActivities: payload
             }
         case ORDER:
             let orderCopy = [...state.filteredCountries];
@@ -93,14 +99,14 @@ const reducer = (state = initialState, { type, payload }) => {
             }
             if (payload === "Has") {
                 const filterActivity = state.allCountries.filter((country) => country.Activities.length > 0)
-                return{
+                return {
                     ...state,
                     filteredCountries: filterActivity,
                 };
             };
             if (payload === "Without") {
                 const filterActivity = state.allCountries.filter((country) => country.Activities.length === 0)
-                return{
+                return {
                     ...state,
                     filteredCountries: filterActivity,
                 };
