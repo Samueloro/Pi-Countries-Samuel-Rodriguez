@@ -31,6 +31,20 @@ export const getAllActivities = () => {
     };
 };
 
+export const getCountryById = (id) => {
+
+    return async (dispatch) => {
+        try {
+            const response = await axios(`http://localhost:3001/countries/${id}`);
+            const data = response.data;
+            dispatch({
+                type: GET_COUNTRY_BY_ID,
+                payload: data,
+            })
+            return data;
+        } catch (error) { throw error };
+    };
+};
 export const searchByname = (name) => {
     const endpoint = `http://localhost:3001/countries/name?name=${name}`;
 
@@ -46,20 +60,6 @@ export const searchByname = (name) => {
     };
 };
 
-export const getCountryById = (id) => {
-    const endpoint = `http://localhost:3001/countries/${id}`;
-
-    return async (dispatch) => {
-        try {
-            const { data } = await axios(endpoint);
-            dispatch({
-                type: GET_COUNTRY_BY_ID,
-                payload: data,
-            })
-            return data;
-        } catch (error) { throw error };
-    };
-};
 
 export const postActivity = ({ name, difficulty, duration, season, country }) => {
     const endpoint = `http://localhost:3001/activities`

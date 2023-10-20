@@ -1,22 +1,25 @@
 import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { getCountryById } from "../../Redux/actions";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 function Detail({ country }) {
     const dispatch = useDispatch();
     const { id } = useParams();
-    const { name, continent, capital, subregion, area, population, image} = country;
+    const { name, continent, capital, subregion, area, population, image, Activities } = country;
+
 
     useEffect(() => {
         const detailCountry = async () => {
             try {
-                await dispatch(getCountryById(id));
+                const data = await dispatch(getCountryById(id));
+                return data;
             } catch (error) { throw error };
         };
         detailCountry();
-    }, [id]);
+    }, [dispatch, id]);
 
+    console.log(Activities)
 
     return (
         <div>
@@ -31,6 +34,31 @@ function Detail({ country }) {
             }
             <h2>Area: {area}</h2>
             <h2>Population: {population}</h2>
+            <div>
+                {Activities && Activities.length > 0 ? (
+                    <div>
+                        <h2>Your activities:</h2>
+                        {Activities.map((activity) => {
+                            return (
+                                <div key={activity.id}>
+                                    <ul>
+                                        <li>{activity.name}</li>
+                                    </ul>
+                                </div>
+                            )
+                        })}
+                    </div>
+                ) : <p>No activities for this country yet.
+                    <NavLink to='/form'>
+                        Create Activity
+                    </NavLink>
+                    </p>
+
+                }
+                <NavLink to={'/home'}>
+                    <button>Back</button>
+                </NavLink>
+            </div>
         </div>
     )
 }
