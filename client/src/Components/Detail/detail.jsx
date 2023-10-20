@@ -19,7 +19,6 @@ function Detail({ country }) {
         detailCountry();
     }, [dispatch, id]);
 
-    console.log(Activities)
 
     return (
         <div>
@@ -37,7 +36,7 @@ function Detail({ country }) {
             <div>
                 {Activities && Activities.length > 0 ? (
                     <div>
-                        <h2>Your activities:</h2>
+                        <h2>Associated Activities:</h2>
                         {Activities.map((activity) => {
                             return (
                                 <div key={activity.id}>
@@ -56,7 +55,7 @@ function Detail({ country }) {
 
                 }
                 <NavLink to={'/home'}>
-                    <button>Back</button>
+                    <button>Back Home</button>
                 </NavLink>
             </div>
         </div>

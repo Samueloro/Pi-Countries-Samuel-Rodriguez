@@ -1,9 +1,21 @@
-import { FILTER_BY_ACTIVITY, FILTER_CONTINENT, FILTER_POPULATION, GET_ACTIVITIES, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, ORDER, POST_ACTIVITY, SEARCH_BY_NAME } from "./actions-types";
+import {
+    FILTER_BY_ACTIVITY,
+    FILTER_CONTINENT,
+    FILTER_POPULATION,
+    GET_ACTIVITIES,
+    GET_ALL_COUNTRIES,
+    GET_COUNTRY_BY_ID,
+    ORDER,
+    POST_ACTIVITY,
+    SEARCH_BY_NAME
+} from "./actions-types";
+
 import axios from 'axios';
+
 
 export const getAllCountries = () => {
     const endpoint = 'http://localhost:3001/countries';
-    
+
     return async (dispatch) => {
         try {
             const { data } = await axios(endpoint);
@@ -20,7 +32,7 @@ export const getAllActivities = () => {
 
     return async (dispatch) => {
         try {
-            const response = await axios (`http://localhost:3001/activities`);
+            const response = await axios(`http://localhost:3001/activities`);
             const data = response.data;
             dispatch({
                 type: GET_ACTIVITIES,
@@ -45,6 +57,7 @@ export const getCountryById = (id) => {
         } catch (error) { throw error };
     };
 };
+
 export const searchByname = (name) => {
     const endpoint = `http://localhost:3001/countries/name?name=${name}`;
 
@@ -105,3 +118,5 @@ export const filterByActivity = (order) => {
         payload: order,
     };
 };
+
+

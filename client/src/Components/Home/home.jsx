@@ -31,10 +31,16 @@ function Home({ filteredCountries }) {
         setCurrentPage(currentPage - 1);
     };
     //filtrar los paises a mostrar en cada página
-    const startIndex = currentPage * itemsPerPage;  // indice del primer pais a mostrar por página
-    const endIndex = startIndex + itemsPerPage; // indice del ultimo país a mostrar por página
+    const startIndex = currentPage * itemsPerPage;  // indice del primer pais a mostrar por página // 
+    const endIndex = startIndex + itemsPerPage; // indice del ultimo país a mostrar por página // 
     //los paises que se  van a mostrar
-    const countriesFilteredToShow = filteredCountries.slice(startIndex, endIndex);// se muestran los paises por ejemplo del  (0 al 9)(1 al 10)
+    const countriesFilteredToShow = filteredCountries.slice(startIndex, endIndex);
+
+    //MOSTRAR PAGINADO
+    const totalPages = Math.ceil(filteredCountries.length / itemsPerPage) // 
+    const firstItem = startIndex + 1;
+    const lastItem = Math.min(endIndex, filteredCountries.length)
+
 
     //ORDENAR POR ALFABETO
     const handleOrder = (event) => {
@@ -52,7 +58,7 @@ function Home({ filteredCountries }) {
     };
 
     //FILTRAR POR ACTIVIDAD
-    const handleActivity = (event)=>{
+    const handleActivity = (event) => {
         dispatch(filterByActivity(event.target.value));
     };
 
@@ -73,6 +79,12 @@ function Home({ filteredCountries }) {
                 <option value={"South America"}>South America</option>
             </select>
 
+            <select name="orderName" id="orderName" onChange={handleOrder}>
+                <option value={"All"}>Select</option>
+                <option value={"A"}>A-Z</option>
+                <option value={"Z"}>Z-A</option>
+            </select>
+
             <select name="orderPopulation" id="orderPopulation" onChange={handlePopulation}>
                 <option value={"All"}>Select</option>
                 <option value={"smaller"}>Smaller population</option>
@@ -85,13 +97,11 @@ function Home({ filteredCountries }) {
                 <option value={"Has"}>Has Activities</option>
             </select>
 
-            <select name="orderName" id="orderName" onChange={handleOrder}>
-                <option value={"All"}>Select</option>
-                <option value={"A"}>A-Z</option>
-                <option value={"Z"}>Z-A</option>
-            </select>
-
             <button onClick={handleNext} disabled={endIndex >= filteredCountries.length}>Next Page</button>
+            <br />
+            <div>
+                Page {currentPage + 1} of {totalPages} | Showing {firstItem} - {lastItem}  of  {filteredCountries.length} countries
+            </div>
 
             {
                 countriesFilteredToShow.map((country) => {

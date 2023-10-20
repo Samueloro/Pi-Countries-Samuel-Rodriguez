@@ -14,9 +14,11 @@ function Form({ allCountries }) {
         country: null
     })
 
-    const [name, setName] =useState("")
+
     //aquí se guardan los paises seleccionados
+    //para el usuario
     const [selectedCountries, setSelectedCountries] = useState([]);
+    //para el back
     const [selectedCountriesId, setSelectedCountriesId] = useState([]);
 
     //estado para guardar toda la información del form
@@ -28,9 +30,9 @@ function Form({ allCountries }) {
         country: [],
     })
 
-    //SELECCIONAR LOS PAISES 
+    //SELECCION Y DESELECCIÓN DE  LOS PAISES 
     const changeCountrySelection = (countryId, index) => {
-        if (selectedCountries.includes(countryId)) {
+        if (selectedCountriesId.includes(countryId)) {
             selectedCountriesId(selectedCountriesId.filter(item => item !== countryId));
             selectedCountries(selectedCountries.filter(item => item !== countryId));
         } else {
@@ -53,12 +55,18 @@ function Form({ allCountries }) {
 
     // REMOVER PAISES DE LA LISTA DE PAISES SELECCIONADOS
     const removeCountry = (index) => {
-        const updateCountries = [...selectedCountries];
-        updateCountries.splice(index, 1);
+        const updateCountries = selectedCountries.filter((_,i) => i !== index); // selecciono el indice NO el elemento
+        const updateCountriesId = selectedCountriesId.filter((_, i) => i !== index);
+
+        setSelectedCountriesId(updateCountriesId);
         setSelectedCountries(updateCountries);
+        setInformation({
+            ...information,
+            country: updateCountriesId,
+        })
     }
 
-    //
+    //Guardar los que escribe el usuario
     const handleChange = (event) => {
         const { name, value } = event.target;
         setInformation({
@@ -71,10 +79,10 @@ function Form({ allCountries }) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const duration = event.target.duration.value;
-        const season = event.target.season.value;
-        const country = event.target.country.value;
-        const activityName = event.target.name.value;
+        const duration = information.duration;
+        const season = information.season;
+        const country = information.country;
+        const activityName = information.name;
 
         const durationError = validateDuration(duration);
         const seasonError = validateSeason(season);
@@ -90,9 +98,16 @@ function Form({ allCountries }) {
 
         if (!durationError && !seasonError && !countryError && !activityNameError) {
             dispatch(postActivity(information));
-            setSelectedCountries([]);   
+            setSelectedCountries([]);
             setSelectedCountriesId([]);
-            setName("");   
+            alert ('🎇🎆The activity has been created successfully 🎆🎇')
+            setInformation({
+                name: "",
+                difficulty: "",
+                duration: "",
+                season: "",
+                country: [],
+            });
         }
     };
 
@@ -119,11 +134,12 @@ function Form({ allCountries }) {
                         autoComplete="off"
                         placeholder="Write the activity's name"
                         onChange={handleChange}
+                        value={information.name}
                     />
                 </div>
 
                 <div>
-                    <label> Difficulty: </label>
+                    <label > Difficulty: </label>
                     <input type="radio" id="1" name="difficulty" value="1" onChange={handleChange} defaultChecked />
                     <label htmlFor="1">1</label>
                     <input type="radio" id="2" name="difficulty" value="2" onChange={handleChange} />
@@ -145,12 +161,13 @@ function Form({ allCountries }) {
                         min="0"
                         max="24"
                         onChange={handleChange}
+                        value={information.duration}
                     />
                 </div>
 
                 <div>
                     <label> Season: </label>
-                    <select onChange={handleChange} name="season" id="season">
+                    <select onChange={handleChange} name="season" id="season" value={information.season}>
                         <option>--</option>
                         <option value="Summer">Summer</option>
                         <option value="Autumn">Autumn</option>
