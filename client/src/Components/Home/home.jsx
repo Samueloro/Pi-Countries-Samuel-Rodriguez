@@ -3,6 +3,7 @@ import { filterByActivity, filterByContinent, filterByPopulation, getAllCountrie
 import { useEffect, useState } from "react";
 import CardCountry from "../CardCountry/cardCountry";
 import SearchBar from "../SearchBar/searchBar";
+import style from './home.module.css'
 
 function Home({ filteredCountries }) {
 
@@ -64,59 +65,69 @@ function Home({ filteredCountries }) {
 
     return (
         <div>
-            <SearchBar />
-            {/* Se agrega la propiedad disabled para que se desabilite si no hay paises en el next o en el previus */}
-            <button onClick={handlePrevius} disabled={currentPage === 0}>Previus Page</button>
+            < SearchBar />
+            <div className={style.filters}>
+                Continent
+                <select name="filter continent" id="filter continent" onChange={handleContinent}>
+                    <option value={"All"}>All</option>
+                    <option value={"Africa"}>Africa</option>
+                    <option value={"Antarctica"}>Antarctica</option>
+                    <option value={"Asia"}>Asia</option>
+                    <option value={"Europe"}>Europe</option>
+                    <option value={"North America"}>North America</option>
+                    <option value={"Oceania"}>Oceania</option>
+                    <option value={"South America"}>South America</option>
+                </select>
 
-            <select name="filter continent" id="filter continent" onChange={handleContinent}>
-                <option value={"All"}>All</option>
-                <option value={"Africa"}>Africa</option>
-                <option value={"Antarctica"}>Antarctica</option>
-                <option value={"Asia"}>Asia</option>
-                <option value={"Europe"}>Europe</option>
-                <option value={"North America"}>North America</option>
-                <option value={"Oceania"}>Oceania</option>
-                <option value={"South America"}>South America</option>
-            </select>
+                Order
+                <select name="orderName" id="orderName" onChange={handleOrder}>
+                    <option value={"All"}>Select</option>
+                    <option value={"A"}>A-Z</option>
+                    <option value={"Z"}>Z-A</option>
+                </select>
 
-            <select name="orderName" id="orderName" onChange={handleOrder}>
-                <option value={"All"}>Select</option>
-                <option value={"A"}>A-Z</option>
-                <option value={"Z"}>Z-A</option>
-            </select>
+                Population
+                <select name="orderPopulation" id="orderPopulation" onChange={handlePopulation}>
+                    <option value={"All"}>Select</option>
+                    <option value={"smaller"}>Smaller population</option>
+                    <option value={"higher"}>Higher population</option>
+                </select>
 
-            <select name="orderPopulation" id="orderPopulation" onChange={handlePopulation}>
-                <option value={"All"}>Select</option>
-                <option value={"smaller"}>Smaller population</option>
-                <option value={"higher"}>Higher population</option>
-            </select>
-
-            <select name="orderAct" id="orderAct" onChange={handleActivity}>
-                <option value={"All"}>Select</option>
-                <option value={"Without"}>Without Activities</option>
-                <option value={"Has"}>Has Activities</option>
-            </select>
-
-            <button onClick={handleNext} disabled={endIndex >= filteredCountries.length}>Next Page</button>
-            <br />
-            <div>
-                Page {currentPage + 1} of {totalPages} | Showing {firstItem} - {lastItem}  of  {filteredCountries.length} countries
+                Activities
+                <select name="orderAct" id="orderAct" onChange={handleActivity}>
+                    <option value={"All"}>Select</option>
+                    <option value={"Without"}>Without Activities</option>
+                    <option value={"Has"}>Has Activities</option>
+                </select>
             </div>
 
-            {
-                countriesFilteredToShow.map((country) => {
-                    return (
-                        <CardCountry
-                            key={country.id}
-                            id={country.id}
-                            name={country.name}
-                            image={country.image}
-                            continent={country.continent}
-                        />
-                    )
-                })
+            <br />
+            <div className={style.cards}>
+                {
+                    countriesFilteredToShow.map((country) => {
+                        return (
+                            <CardCountry
+                                key={country.id}
+                                id={country.id}
+                                name={country.name}
+                                image={country.image}
+                                continent={country.continent}
+                            />
+                        )
+                    })
 
-            }
+                }
+            </div>
+            <div className={style.previus}>
+                {/* Se agrega la propiedad disabled para que se desabilite si no hay paises en el next o en el previus */}
+                <button onClick={handlePrevius} disabled={currentPage === 0} className={style.button}>Previus Page</button>
+            </div>
+            <span className={style.pages}>
+                Page {currentPage + 1} of {totalPages} | Showing {firstItem} - {lastItem}  of  {filteredCountries.length} countries
+            </span>
+            <div className={style.next}>
+                <button onClick={handleNext} disabled={endIndex >= filteredCountries.length} className={style.button}>Next Page</button>
+            </div>
         </div>
     );
 };

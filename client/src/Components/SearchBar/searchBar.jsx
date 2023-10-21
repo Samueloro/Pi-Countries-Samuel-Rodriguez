@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { searchByname } from "../../Redux/actions"
+import style from "./searchBar.module.css"
 
 
 function SearchBar({ searchByname }) {
@@ -17,8 +18,14 @@ function SearchBar({ searchByname }) {
     }
 
     return (
-        <div>
-            <input value={searchCountry} onChange={handleSearch} type="search" placeholder="Search Country" />
+        <div className={style.searchBar}>
+            <input 
+            value={searchCountry} 
+            onChange={handleSearch} 
+            type="search" 
+            placeholder="Search Country"
+            className={style.input}
+            />
         </div>
     )
 }

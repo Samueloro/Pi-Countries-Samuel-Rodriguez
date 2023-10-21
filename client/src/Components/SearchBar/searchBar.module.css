@@ -1,0 +1,31 @@
+.searchBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    width: 10%;
+    height: 25px;
+    line-height: 28px;
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: .3s ease;
+    margin: 5px;
+}
+
+.input::placeholder {
+    color: #9e9ea7;
+}
+
+.input:focus,
+input:hover {
+    outline: none;
+    border-color: #1796E6;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px #1653E0 (234 76 137 / 10%);
+}

@@ -1,3 +1,9 @@
-:root{
-    background-color: gray;
+:root {
+    background: url('https://images.unsplash.com/photo-1562504208-03d85cc8c23e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position:center; 
+    
+    font-family: 'Ubuntu', sans-serif;
 }
