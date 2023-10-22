@@ -1,0 +1,215 @@
+.center {
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.formContainer {
+    color: aliceblue;
+    width: 35rem;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin-top: 4rem;
+    font-size: medium;
+    border: 3px solid #2860E0;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.315);
+    backdrop-filter: blur(10px);
+}
+
+.form {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.name {
+    max-width: 190px;
+    background-color: #f5f5f5;
+    color: #2860E0;
+    padding: .15rem .5rem;
+    min-height: 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    line-height: 1.15;
+}
+
+.name:focus {
+    border-bottom: 2px solid #5b5fc7;
+    border-radius: 4px 4px 2px 2px;
+}
+
+.name:hover {
+    outline: 1px solid lightgrey;
+}
+
+.duration {
+    border-radius: 4px;
+    width: 40px;
+}
+
+.duration:focus {
+    outline: none;
+    border-color: #2860E0;
+}
+
+.season {
+    border-radius: 4px;
+}
+
+.season:hover {
+    border-color: #289AE0;
+}
+
+.season:focus {
+    outline: none;
+    border-color: #2860E0;
+}
+
+.country {
+    border-radius: 4px;
+    width: 300px;
+}
+
+.country:hover {
+    border-color: #289AE0;
+}
+
+.country:focus {
+    outline: none;
+    border-color: #2860E0;
+}
+
+.radioInput input {
+    display: none;
+}
+
+.radioInput {
+    --container_width: 250px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: #fff;
+    color: #000000;
+    width: var(--container_width);
+    overflow: hidden;
+    border: 1px solid rgba(53, 52, 52, 0.226);
+    height: 25px;
+}
+
+.radioInput label {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-weight: 500;
+    letter-spacing: -1px;
+    font-size: 14px;
+}
+
+.selection {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: calc(var(--container_width) / 5);
+    z-index: 0;
+    left: 0;
+    top: 0;
+    transition: .15s ease;
+}
+
+.radiInput label:has(input:checked) {
+    color: #fff;
+}
+
+.radioInput label:has(input:checked)~.selection {
+    background-color: #2860E0;
+    display: inline-block;
+}
+
+.radioInput label:nth-child(1):has(input:checked)~.selection {
+    transform: translateX(calc(var(--container_width) * 0/5));
+}
+
+.radioInput label:nth-child(2):has(input:checked)~.selection {
+    transform: translateX(calc(var(--container_width) * 1/5));
+}
+
+.radioInput label:nth-child(3):has(input:checked)~.selection {
+    transform: translateX(calc(var(--container_width) * 2/5));
+}
+
+.radioInput label:nth-child(4):has(input:checked)~.selection {
+    transform: translateX(calc(var(--container_width) * 3/5));
+}
+
+.radioInput label:nth-child(5):has(input:checked)~.selection {
+    transform: translateX(calc(var(--container_width) * 4/5));
+}
+
+.submit {
+    position: relative;
+    top: 78%;
+    left: 32%;
+    width: fit-content;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.submit:focus {
+    outline: none;
+    border-color: #2860E0;
+}
+
+.submit:hover {
+    border-color: #289AE0;
+}
+
+.selectedCountries {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;  
+}
+
+.countrySelect {
+    border: 2px solid #289AE0;
+    margin: 5px;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.titleSelect{
+    margin: 0;
+}
+
+.remove{
+    background: none;
+    border: none;
+    color:red;
+    padding: 1px;
+    padding-left: 5px;
+    padding-right: 0;
+    margin-left: 3px;
+}
+
+.remove:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+.remove:active{
+    transform: scale(1);
+}

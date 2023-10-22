@@ -1,0 +1,25 @@
+.navContainer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.button {
+    width: 200px;
+    height: 30px;
+    border: 3px solid #2c29e171;
+    border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.39);
+    font-size: 1.2em;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.button:hover {
+    background: #2B29E1;
+    color: white;
+    font-size: 1.3em;
+}
