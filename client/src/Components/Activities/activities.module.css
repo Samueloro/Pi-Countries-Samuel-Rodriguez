@@ -1,0 +1,34 @@
+.conteiner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: aliceblue;
+}
+
+.add{
+    text-decoration: none;
+}
+
+.addTitle{
+    color: #289AE0;
+    padding: 3px;
+    width: fit-content;
+    height: 30px;
+    border: 2px solid #2B29E1;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.466);
+}
+
+.addTitle:hover{
+    transform: scale(1.1);
+}
+
+.addTitle:active{
+    transform: scale(1);
+}
+
+.activities{
+    margin: 1rem;
+    padding: 1rem;
+}
+

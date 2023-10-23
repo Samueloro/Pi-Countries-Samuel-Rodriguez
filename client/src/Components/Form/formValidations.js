@@ -12,7 +12,8 @@ export const validateName = (name) => {
 };
 
 export const validateDuration = (duration) => {
-    const durationValue = parseInt(duration);
+    const durationValue = Number(duration); 
+
     if(!duration){
         return "Please enter a valid duration"
     }
@@ -21,6 +22,9 @@ export const validateDuration = (duration) => {
     };
     if(durationValue < 1 || durationValue > 24){
         return "The duration must be between 1 to 24"
+    }
+    if(!Number.isInteger(durationValue)){
+        return "The number must be an integer"
     }
     return null;
 };

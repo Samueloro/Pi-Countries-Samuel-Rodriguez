@@ -14,14 +14,17 @@ const allCountries = async () => {
     const countries = countriesData.map(async (data) => {
       // para no tener el error  string violation  (los vulve de array a str)
       const continent = data.continents.join(" ");
+
       // para no tener el error  string violation y si capital no está definido
       const capital =Array.isArray(data.capital)? data.capital.join(" ") : data.capital || '-';
+
       /*       console.log(capital) */
       //Por si la información de capital o subregión no se encuentra la completa con un guión
       if(!data.capital || !data.subregion) {
         data.capital = "-"
         data.subregion = '-'
       }
+
       //información del país que se va a almacenar en la DB
       const {cca3, name, flags, subregion, area, population} = data;
       const newCountry = {
