@@ -7,7 +7,8 @@ import {
     GET_COUNTRY_BY_ID,
     ORDER,
     POST_ACTIVITY,
-    SEARCH_BY_NAME
+    SEARCH_BY_NAME,
+    DELETE_ACTIVITY
 } from "./actions-types";
 
 import axios from 'axios';
@@ -75,7 +76,7 @@ export const searchByname = (name) => {
 
 
 export const postActivity = ({ name, difficulty, duration, season, country }) => {
-    const endpoint = `http://localhost:3001/activities`
+    const endpoint = `http://localhost:3001/activities`;
 
     return async (dispatch) => {
         try {
@@ -85,6 +86,19 @@ export const postActivity = ({ name, difficulty, duration, season, country }) =>
                 payload: data,
             });
             return data;
+        } catch (error) { throw error };
+    };
+};
+
+export const deleteActivity = (id) => {
+    const endpoint = `http://localhost:3001/activities/${id}`;
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.delete(endpoint);
+            dispatch({
+                type: DELETE_ACTIVITY,
+                payload: data
+            });
         } catch (error) { throw error };
     };
 };

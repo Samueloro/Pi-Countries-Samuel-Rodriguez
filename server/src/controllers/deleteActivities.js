@@ -1,15 +1,12 @@
-const { Op } = require('sequelize');
 const { Activity } = require('../db.js');
 
 async function deleteActivities(req, res) {
     try {
-        const { id, name } = req.body;
-        Activity.destroy({
-            where: {
-                [Op.and]: [{ id: id }, { name: name }]
-            }
+        const { id } = req.params;
+        await Activity.destroy({
+            where: { id: id }
         })
-        res.status(200).send('La Actividad ha sido borrada')
+        res.status(200).send(id)
     } catch (error) {
         return res.status(400).json({ error: error.message });
     }

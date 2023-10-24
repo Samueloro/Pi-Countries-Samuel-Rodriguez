@@ -4,6 +4,8 @@ export const GET_ACTIVITIES = 'GET_ACTIVITIES'
 
 export const POST_ACTIVITY = 'POST_ACTIVITY';
 
+export const  DELETE_ACTIVITY = "DELETE_ACTIVITY"
+
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME';
 
 export const ORDER = 'ORDER';

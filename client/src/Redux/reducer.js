@@ -1,4 +1,5 @@
 import {
+    DELETE_ACTIVITY,
     FILTER_BY_ACTIVITY,
     FILTER_CONTINENT,
     FILTER_POPULATION,
@@ -48,6 +49,13 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 allActivities: payload
+            }
+        case DELETE_ACTIVITY:
+
+            const filterActivities = state.allActivities.filter(act => act.id  !== payload);
+            return {
+                ...state, 
+                allActivities: filterActivities
             }
         case ORDER:
             let orderCopy = [...state.filteredCountries];

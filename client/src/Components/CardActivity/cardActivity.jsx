@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom"
 import style from "./cardActivity.module.css"
 
-export default function CardActivity({ name, difficulty, duration, season, countries }) {
+export default function CardActivity({ onClose, id, name, difficulty, duration, season, countries }) {
 
-    const id = countries.map(country => country.id);
 
+ 
     return (
         <div key={id} className={style.activity}>
             <h3 className={style.name}> <p style={{ color: '#289AE0' }}>Name:</p>{name}</h3>
@@ -12,6 +12,8 @@ export default function CardActivity({ name, difficulty, duration, season, count
             <h3 className={style.duration}><p style={{ color: '#289AE0' }}>Duration:</p>{duration} {duration === 1 ? 'hour' : 'hours'}</h3>
             <h3 className={style.season}><p style={{ color: '#289AE0' }}>Season:</p>{season}</h3>
             <div>
+                <button onClick={() => onClose(id)} >X</button>
+
                 <h3 className={style.countries} style={{ color: '#289AE0' }}>Countries:</h3>
                 <ul className={style.list} >
                     {countries.map((country) => {

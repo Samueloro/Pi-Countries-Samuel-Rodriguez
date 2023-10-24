@@ -19,7 +19,7 @@ function Home({ filteredCountries }) {
         const loadCountries = async () => {
             try {
                 await dispatch(getAllCountries());
-            } catch (error) { throw error };
+            } catch (error) { console.error(error) };
         };
         loadCountries();
     }, [dispatch]);

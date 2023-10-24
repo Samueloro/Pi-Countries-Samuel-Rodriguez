@@ -14,7 +14,7 @@ router.get("/countries/name", getCountriesByName);
 router.get("/countries/:id", getCountriesById);
 router.post("/activities", postActivities);
 router.get("/activities", getActivities);
-router.delete("/activities", deleteActivities);
+router.delete("/activities/:id", deleteActivities);
 
 
 module.exports = router;
