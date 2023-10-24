@@ -76,3 +76,22 @@
 .countries{
     grid-area: countries;
 }
+
+.close{
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    border: 0;
+    font-size: medium;
+    color: #289AE0;
+    cursor: pointer;
+}
+
+.close:hover{
+    color: red;
+}
+
+
+.conteinerF{
+    margin: 1rem;
+}

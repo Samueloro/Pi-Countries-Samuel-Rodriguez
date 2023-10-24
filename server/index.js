@@ -48,7 +48,7 @@ const allCountries = async () => {
 }
 
 
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
   await allCountries()
   server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
