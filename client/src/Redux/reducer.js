@@ -114,7 +114,7 @@ const reducer = (state = initialState, { type, payload }) => {
             if (payload === "All") {
                 return {
                     ...state,
-                    filteredCountries: state.filteredCountries
+                    filteredCountries: state.allCountries
                 }
             }
             if (payload === "Has") {

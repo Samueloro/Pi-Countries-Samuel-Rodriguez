@@ -1,8 +1,3 @@
-
-
-
-
-
 const activities = [
     { name: 'Rafting', difficulty: 4, duration: 3, season: 'Summer', country: ["NZL", "ECU", "NPL"] },
     { name: 'Trekking', difficulty: 2, duration: 6, season: 'Autumn', country: ["CHL", "CAN", "NPL", "PER"] },
