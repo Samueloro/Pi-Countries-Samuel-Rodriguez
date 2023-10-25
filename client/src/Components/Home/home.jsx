@@ -34,6 +34,7 @@ function Home({ filteredCountries }) {
     //filtrar los paises a mostrar en cada página
     const startIndex = currentPage * itemsPerPage;  // indice del primer pais a mostrar por página // 
     const endIndex = startIndex + itemsPerPage; // indice del ultimo país a mostrar por página // 
+    
     //los paises que se  van a mostrar
     const countriesFilteredToShow = filteredCountries.slice(startIndex, endIndex);
 

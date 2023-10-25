@@ -25,7 +25,7 @@ function Form({ allCountries }) {
     //estado para guardar toda la información del form
     const [information, setInformation] = useState({
         name: "",
-        difficulty: "",
+        difficulty: Number("1"),
         duration: Number(""),
         season: "",
         country: [],
@@ -102,12 +102,12 @@ function Form({ allCountries }) {
             dispatch(postActivity(information));
             setSelectedCountries([]);
             setSelectedCountriesId([]);
-            alert('🎇🎆The activity has been created successfully 🎆🎇')
+            alert('🎇🎆The activity has been created successfully 🎆🎇');
             setInformation({
                 name: "",
-                difficulty: "",
+                difficulty: "1",
                 duration: "",
-                season: "",
+                season: "--",
                 country: [],
             });
         }

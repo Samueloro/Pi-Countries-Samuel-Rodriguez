@@ -58,11 +58,11 @@ const reducer = (state = initialState, { type, payload }) => {
                 allActivities: filterActivities
             }
         case ORDER:
-            let orderCopy = [...state.filteredCountries];
+            const orderCopy = [...state.filteredCountries];
             if (payload === "All") {
                 return {
                     ...state,
-                    filteredCountries: state.allCountries,
+                    filteredCountries: state.filteredCountries
                 }
             }
             if (payload === 'A') {
@@ -94,7 +94,7 @@ const reducer = (state = initialState, { type, payload }) => {
             if (payload === "All") {
                 return {
                     ...state,
-                    filteredCountries: state.allCountries,
+                    filteredCountries: state.filteredCountries
                 }
             }
             if (payload === 'smaller') {
@@ -114,7 +114,7 @@ const reducer = (state = initialState, { type, payload }) => {
             if (payload === "All") {
                 return {
                     ...state,
-                    filteredCountries: state.allCountries,
+                    filteredCountries: state.filteredCountries
                 }
             }
             if (payload === "Has") {

@@ -7,6 +7,7 @@ const getActivities = require("../controllers/getActivities");
 const deleteActivities = require("../controllers/deleteActivities");
 
 
+
 const router = Router();
 
 router.get("/countries", getAllCountries);
