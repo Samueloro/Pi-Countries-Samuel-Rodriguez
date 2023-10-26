@@ -52,6 +52,7 @@ function Home({ filteredCountries }) {
     //FILTRAR POR CONTINENTE
     const handleContinent = (event) => {
         dispatch(filterByContinent(event.target.value));
+        setCurrentPage(0)
     };
 
     //FILTRAR POR POBLACIÓN
@@ -62,6 +63,7 @@ function Home({ filteredCountries }) {
     //FILTRAR POR ACTIVIDAD
     const handleActivity = (event) => {
         dispatch(filterByActivity(event.target.value));
+        setCurrentPage(0)
     };
 
     return (
